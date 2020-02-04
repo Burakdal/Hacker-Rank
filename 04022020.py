@@ -43,6 +43,22 @@ def minimumSwaps(arr):
         index_dict[index],index_dict[norm_arr[other_part_min_index]]=index_dict[norm_arr[other_part_min_index]],index_dict[index]
         count += 1
     return count
+
+def checkMagazine(magazine, note):
+    for word in note:
+        print(word,len(word))
+        count=note.count(word)
+        if word not in magazine:
+            print('No')
+            return
+        if not count <= magazine.count(word):
+            print('No')
+            return
+    print('Yes')
+
+
+
+
 #dictionary indexing deneme 10 üzeri 6 da 4 kat daha yavaş brutforce indexing den
 import time
 test_array=[i for i in range(1000000)]
@@ -53,5 +69,10 @@ print(time.time())
 print(time.time())
 print(test_array.index(99999))
 print(time.time())
+from collections import Counter
+#counter çok hızlı topluyo
+print(Counter(['give', 'me', 'one', 'grand', 'today', 'night']))
+arr1=['give', 'me', 'one', 'grand', 'today', 'night']
+arr2=['give', 'one', 'grand', 'today']
 
-
+checkMagazine(arr1,arr2)
