@@ -37,10 +37,8 @@ def sherlockAndAnagrams(s):
             count+=b[j]*(b[j]-1)/2
     return int(count)
 
+
 print(sherlockAndAnagrams('cdcd'))
-
-
-
 
 
 
