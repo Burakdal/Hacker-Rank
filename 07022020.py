@@ -83,11 +83,19 @@ def activityNotifications(expenditure, d):
         counts[old_value] -= 1
         counts[exp] += 1
     return alerts
-
-
-
-
-
 print(activityNotifications(deneme_Arr,3))
-
 print(int(1.5))
+
+#dequeue practise
+
+from collections import deque
+import time
+q=deque([])
+l=[]
+start=time.time()
+for i in range(1000000):
+    q.append(i)
+stop=time.time()
+diffq=stop-start
+
+
