@@ -175,30 +175,23 @@ def substrCount(n, s):
     return tot
 from collections import Counter
 def commonChild(s1, s2):
-    if s1==s2:
-        return len(s1)-1
-    s1_counter=Counter(s1)
-    s2_counter=Counter(s2)
-    counter=0
-    common=''
-    for key,val in s1_counter.items():
-        if key in s2_counter.keys():
-            if len(common) > 0:
-                condition=s1.index(common[-1]) < s1.index(key) and s2.index(common[-1]) < s2.index(key)
-                if condition:
-                    common += key
-                    if val < s2_counter[key]:
-                        counter += val
-                    else:
-                        counter+=s2_counter[key]
+    l1 = len(s1)
+    l2 = len(s2)
+    lcs = [[0] * (len(s1) + 1) for _ in range(2)]
+    for i in range(l1):
+        li1 = (i + 1) % 2
+        li = i % 2
+        for j in range(l2):
+            if s1[i] == s2[j]:
+                lcs[li1][j + 1] = (lcs[li][j] + 1)
+            elif lcs[li1][j] > lcs[li][j + 1]:
+                lcs[li1][j + 1] = lcs[li1][j]
             else:
-                common+=key
-                if val < s2_counter[key]:
-                    counter += val
-                else:
-                    counter += s2_counter[key]
-    return counter
-ex1="SHINCHAN"
-ex2="NOHARAAA"
+                lcs[li1][j + 1] = lcs[li][j + 1]
+    return lcs[(i + 1) % 2][j + 1]
+
+
+ex1="WEWOUCUIDGCGTRMEZEPXZFEJWISRSBBSYXAYDFEJJDLEBVHHKS"
+ex2="FDAGCXGKCTKWNECHMRXZWMLRYUCOCZHJRRJBOAJOQJZZVUYXIC"
 print(commonChild(ex1,ex2))
 print(ex1[-1])
