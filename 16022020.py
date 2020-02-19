@@ -5,7 +5,6 @@ class Player:
         self.score = score
     def __repr__(self):
         return "Player"
-
     def comparator(self,a, b):
         if a.score > b.score:
             return -1
